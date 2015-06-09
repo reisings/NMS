@@ -74,7 +74,9 @@ print "PROMPT IS: ", prompt
 for host in hosts:
 	host = host.replace("\n", '')
 	mytime = time.strftime("%m%d%y%H%M%S")
-	rewind(COMMANDS)
+	if (cmdSource != 'S') and (cmdSource != 's'):
+		rewind(COMMANDS)
+	
 	fout = file(host + '_' + mytime + '.txt','w')
 
 	ssh = pexpect.spawn ("ssh " + username + "@" + host)
